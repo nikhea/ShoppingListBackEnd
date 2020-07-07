@@ -9,7 +9,8 @@ let CategoriesSchema = new Schema({
 	items: [
 		{
 			type: mongoose.Schema.Types.ObjectId,
-			ref: 'Item'
+			ref: 'Item',
+			require: true
 		}
 	],
 

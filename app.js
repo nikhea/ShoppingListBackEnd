@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const ItemRoutes = require('./api/Routes/Items');
+const CategoriesRoutes = require('./api/Routes/Categories')
 const app = express();
 
 app.use(cors());
@@ -24,6 +25,8 @@ app.get('/', (req, res, next) => {
 });
 
 app.use('/api/routes/item', ItemRoutes);
+app.use('/api/routes/categories', CategoriesRoutes);
+
 
 app.use((req, res, next) => {
 	const error = new Error('NOT FOUND ');

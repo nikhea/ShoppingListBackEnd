@@ -1,6 +1,7 @@
 const db = require('../db');
 const mongoose = require('mongoose');
 exports.getItem = async (req, res, next) => {
+	const id = req.params.CategoriesId
 	try {
 		const Items = await db.Items.find().select('name price itemImage isCompelete date createdAt updatedAt').exec();
 		console.log(Items);
