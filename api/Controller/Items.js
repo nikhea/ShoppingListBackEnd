@@ -144,7 +144,7 @@ exports.removeItem = async (req, res, next) => {
 			res.status(404).json({ msg: 'No Valid entry found for provided ID' });
 		}
 	} catch (err) {
-		console.log(err);
+		
 		res.status(500).json({ msg: 'Item unable to delete', err: err });
 	}
 };

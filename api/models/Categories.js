@@ -19,8 +19,8 @@ let CategoriesSchema = new Schema({
 		default: Date.now
 	}
 });
-CategoriesSchema.set('timeStamps', true);
-
+CategoriesSchema.set('timestamps', true);
+// ItemSchema.set('timestamps', true)
 let CATEGORIES = mongoose.model('Categorie', CategoriesSchema);
 
 module.exports = CATEGORIES;
