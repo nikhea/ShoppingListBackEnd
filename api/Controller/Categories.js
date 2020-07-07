@@ -32,3 +32,5 @@ exports.addCategories = async (req, res, next) => {
 		res.status(500).json({ msg: 'Categories Not Added', error });
 	}
 };
+
+

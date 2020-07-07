@@ -20,3 +20,27 @@ exports.updateOneItem = async (req, res, next) => {
 		res.status(500).json({ msg: 'Items Not Found', error });
 	}
 };
+
+
+
+const item = await newItem.save();
+if (item) {
+	const response = {
+		msg: 'Item added successfully ',
+		createdItem: {
+			name: item.name,
+			price: item.price,
+			itemImage: item.itemImage,
+			created_at: item.createdAt,
+			updated_at: item.updatedAt,
+			_id: item._id,
+			resquest: {
+				types: 'GET',
+				url: `http://localhost:3000/api/routes/item/${item._id} `
+			}
+		}
+	};
+	res.status(200).json(response);
+} else {
+	res.status(500).json({ msg: 'Items Not added', error });
+}

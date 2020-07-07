@@ -24,7 +24,7 @@ app.get('/', (req, res, next) => {
 	res.end('hello world');
 });
 
-app.use('/api/routes/item', ItemRoutes);
+app.use('/api/routes/categories', ItemRoutes);
 app.use('/api/routes/categories', CategoriesRoutes);
 
 
