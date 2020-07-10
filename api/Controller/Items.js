@@ -2,17 +2,19 @@ const db = require('../db');
 const mongoose = require('mongoose');
 exports.getItem = async (req, res, next) => {
 	const id = req.params.CategoriesId;
+	console.log("idddddd",id)
 	try {
-		const Items = await db.Items
+		const Items = await db.Categories
 			.findById(id)
+			.populate('items')
 			.select('name price itemImage isCompelete date createdAt updatedAt')
 			.exec();
-		console.log(Items);
+		console.log("iiiiiiii",Items);
 		if (Items) {
 			const response = {
 				msg: 'Items',
-				count: Items.length,
-				items: Items.map((item) => {
+				count: Items.items.length,
+				items: Items.items.map((item) => {
 					return {
 						name: item.name,
 						price: item.price,

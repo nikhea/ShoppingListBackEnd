@@ -13,9 +13,11 @@ exports.getCategories = async (req, res, next) => {
 					return {
 						_id: categories._id,
 						name: categories.name,
+						description: categories.description,
 						date: categories.date,
 						created_at: categories.createdAt,
 						updated_at: categories.updatedAt,
+
 						resquest: {
 							types: 'GET',
 							url: `http://localhost:3000/api/routes/categories/${categories._id}`
@@ -48,10 +50,11 @@ exports.getCategories = async (req, res, next) => {
 
 exports.addCategories = async (req, res, next) => {
 	try {
-		const { name } = req.body;
+		const { name, description } = req.body;
 		const NewCategories = new db.Categories({
 			_id: new mongoose.Types.ObjectId(),
-			name
+			name,
+			description
 		});
 
 		const categories = await NewCategories.save();
@@ -60,6 +63,7 @@ exports.addCategories = async (req, res, next) => {
 				msg: 'Categories added successfully ',
 				createdCategories: {
 					name: categories.name,
+					description: categories.description,
 					created_at: categories.createdAt,
 					updated_at: categories.updatedAt,
 					_id: categories._id,
@@ -86,6 +90,7 @@ exports.getOneCategorie = async (req, res, next) => {
 			const response = {
 				Categories: {
 					name: categories.name,
+					description: categories.description,
 					created_at: categories.createdAt,
 					updated_at: categories.updatedAt,
 					date: categories.date,

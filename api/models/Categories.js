@@ -6,6 +6,10 @@ let CategoriesSchema = new Schema({
 		type: String,
 		require: true
 	},
+	description: {
+		type: String,
+		require: true
+	},
 	items: [
 		{
 			type: mongoose.Schema.Types.ObjectId,
