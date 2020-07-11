@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 exports.getCategories = async (req, res, next) => {
 	try {
-		const Categories = await db.Categories.find().populate('items').select('name date createdAt updatedAt').exec();
+		const Categories = await db.Categories.find().populate('items').select('name description date createdAt updatedAt').exec();
 		console.log(Categories);
 		if (Categories) {
 			const response = {
@@ -83,7 +83,6 @@ exports.addCategories = async (req, res, next) => {
 };
 exports.getOneCategorie = async (req, res, next) => {
 	const id = req.params.CategoriesId;
-	console.log(id);
 	try {
 		const categories = await db.Categories.findById(id).populate('items').exec();
 		if (categories) {
