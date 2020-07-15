@@ -6,7 +6,7 @@ exports.getItem = async (req, res, next) => {
 		const Items = await db.Categories
 			.findById(id)
 			.populate('items')
-			.select('name price itemImage isCompelete date createdAt updatedAt')
+			.select('name price itemImage date isCompelete date createdAt updatedAt')
 			.exec();
 		if (Items) {
 			const response = {
@@ -17,6 +17,7 @@ exports.getItem = async (req, res, next) => {
 						name: item.name,
 						price: item.price,
 						itemImage: item.itemImage,
+						date: item.date,
 						created_at: item.createdAt,
 						updated_at: item.updatedAt,
 						_id: item._id,
@@ -60,6 +61,7 @@ exports.addItem = async (req, res, next) => {
 						name: item.name,
 						price: item.price,
 						itemImage: item.itemImage,
+						date: item.date,
 						created_at: item.createdAt,
 						updated_at: item.updatedAt,
 						_id: item._id,
